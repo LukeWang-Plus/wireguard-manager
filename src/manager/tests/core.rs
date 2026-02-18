@@ -121,7 +121,7 @@ fn test_init_network_force_reinitializes() {
     // Check backup file exists
     let bak_files: Vec<_> = fs::read_dir(tmp.path())
         .unwrap()
-        .filter_map(|e| e.ok())
+        .filter_map(std::result::Result::ok)
         .filter(|e| e.path().extension().is_some_and(|ext| ext == "bak"))
         .collect();
     assert_eq!(bak_files.len(), 1);
@@ -260,7 +260,7 @@ fn test_update_network_config_creates_backup() {
 
     let bak_files: Vec<_> = fs::read_dir(tmp.path())
         .unwrap()
-        .filter_map(|e| e.ok())
+        .filter_map(std::result::Result::ok)
         .filter(|e| e.path().extension().is_some_and(|ext| ext == "bak"))
         .collect();
     assert_eq!(bak_files.len(), 1);

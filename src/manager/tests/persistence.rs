@@ -41,7 +41,7 @@ fn test_backup_file_created_on_force_init() {
 
     let bak_files: Vec<_> = fs::read_dir(tmp.path())
         .unwrap()
-        .filter_map(|e| e.ok())
+        .filter_map(std::result::Result::ok)
         .filter(|e| e.path().extension().is_some_and(|ext| ext == "bak"))
         .collect();
     assert_eq!(bak_files.len(), 1);

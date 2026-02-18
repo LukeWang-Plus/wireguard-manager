@@ -45,7 +45,7 @@ fn test_show_device_server() {
             assert_eq!(public_ip, "1.2.3.4");
             assert_eq!(listen_port, 51820);
         }
-        _ => panic!("Expected Server variant"),
+        DeviceInfo::Client { .. } => panic!("Expected Server variant"),
     }
 }
 
@@ -57,7 +57,7 @@ fn test_show_device_client() {
             assert_eq!(name, "client1");
             assert_eq!(ip, "10.0.0.11");
         }
-        _ => panic!("Expected Client variant"),
+        DeviceInfo::Server { .. } => panic!("Expected Client variant"),
     }
 }
 

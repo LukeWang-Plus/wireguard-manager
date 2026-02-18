@@ -69,6 +69,5 @@ fn char_chunks_needs_splitting() {
 
 #[test]
 fn char_chunks_empty_string() {
-    let chunks: Vec<&str> = char_chunks("", 5).collect();
-    assert!(chunks.is_empty());
+    assert!(char_chunks("", 5).next().is_none());
 }
